@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="maindiv">
-    <h2>A snap kick into the Error Correction Code field.</h2>
+    <h2>A kick into the Error Correction Code field.</h2>
     <p>
     Today is possible to finish an entirely major of computer science, mastering a wide range of disciplines,
      including abstract machines, compilation processes, and machine learning,
@@ -56,10 +56,11 @@
         It will make it convenient to think over the parameter above as the code's definition,
          and we will denote a code with length \(n,\) dimension \(k,\) and distance \(d\) by \(C = [n,k,d]\).
         <div style="position: relative; width: 100%;">
-            <div style="position: relative; width: 510px;" >
+            <div style="position: relative; width: 350px;" >
             We say that the code is linear if the summation of the codewords pair is also a codeword.
             In that case, the code is a linear space. The map from the original space into the code is called the generator, and by linearity, it is clear that the mapping is also linear. For example,
-            the 4-repetition code over the binary strings could be represented by its generator matrix \(G\). <br><br>              
+            the 4-repetition code over the binary strings could be represented by its generator matrix \(G\).
+            Or equivalency by the generator kernel, the parity check matrix \(H\).  <br><br>              
             And for the r-repetition code we denote by \( [n=kr,k,d=r] \) the paramters of the code. 
             At first glance, it might seem that we could achieve tolerance against an arbitrary number of faults by
              increasing the envelope size. But real-world models show that each bit we add into the transmission has
@@ -71,7 +72,7 @@
               &nbsp; &nbsp; Are there codes in which their distance and dimension are linear at their length? 
         </div>
         
-        <div style="position: absolute; top: 0px; left:530px; width: 200px; left: right;">
+        <div style="position: absolute; top: 0px; left:360px; width: 600px;">
         \[
          
           G=\begin{bmatrix}     
@@ -87,13 +88,61 @@
                                 0 & 0 & 1 \\
                                 0 & 0 & 1 \\ 
                                 0 & 0 & 1
-            \end{bmatrix} \Rightarrow [ 12, 3, 4]
+            \end{bmatrix}, 
+            H = \begin{bmatrix} 
+                                1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 \\ 
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\
+                                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 
+
+
+            \end{bmatrix}\Rightarrow [ 12, 3, 4]
 
          \]   
         </div>
-        </div>
+    </div>    
+    <div style="position: relative; top:30px;">
+        <h3>
+            Linear rate.
+        </h3>
+        We could think about the \(2r\)-repetition code as the code obtained by encoding an \(r\)-repetition codeword
+        with \(r\)-repetition code (again). So we have seen a technique that generates from a given code a new code by
+        applying it twice, which yields an increased distance. Can we pump the rate? <br>
+        The answer is yes; suppose that we have a small code \(C_0\) at length \(w\). Then, consider the following construction:
+         take a \(w\)-regular tree and put the codeword bits over the edges. The assignment will be a valid codeword if,
+          for each vertex, the local word obtained by contacting the values over its adjacent local edges
+           (according to fixed orientation) is a legal codeword in \(C_0\).  
+   
+    </div>    
+    
     </p>
-        Linear rate.
-        Linear distance.
+    <img src="../img/tree_code_bw.jpg" style="width: 800px; " alt="tree code">
+    <div>
+        <p>
+            Note that if a single bit flip results a valid codeword in \(C\), then it implies that there exists a codeword on the
+             small code  \( C_0 \) that can not absorb a single flip. Identical arguments yield that the new code's distance is at
+              least the original. 
+              Due to the recursive structure of the graph, the dimension of the code grows exponentially with the tree's depth.
+               Therefore it is linear in the number of the edges and, hence, linear in the length of the code. 
+        </p>
+    </div>
+    <div style="height: 800px;"></div>
     </div>
 </body>
