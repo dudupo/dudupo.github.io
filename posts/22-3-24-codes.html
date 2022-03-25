@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../css/csssheet.css"> 
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> 
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="maindiv">
+    <h2>A snap kick into the Error Correction Code field.</h2>
+    <p>
+    Today is possible to finish an entirely major of computer science, mastering a wide range of disciplines,
+     including abstract machines, compilation processes, and machine learning,
+      without being exposed to any of the imperfections of those ideals.
+       That fact didn't bother me if I wouldn't hear so many times the argument that quantum computation is impossible due to noisy behavior.
+        So I decided to write a review that is, on the one hand, accessible such that every person could enjoy it while in another,
+         it's enough technical to explain the whole picture and the present issues of the fields. 
+    </p>
+    <h3> A bit of history. </h3>
+    <p>
+        In the half of the last century, the vision of programable machines (computers) began to seem feasible due to some
+         technological breakthroughs. Yet, one challenge still needed to resolve to enable communication.
+          Handling noisy channels was a significant issue those days. Although progress has been made,
+           scientists realized that decreasing the error rate  -the number of bits that flip spontaneously- to zero is
+            an impossible mission. There were even people who argued that achieving digital computing is beyond humankind's
+             reach.  
+        But as it seems, this Html page succeeded in receiving into your computer, and those notes' goal is to review
+         how it's done.
+    </p>
+    <h3> Basic definitions. </h3>
+    <ul>
+        <li>
+            Channel - a name for an environment in which one has only partial certainty over its assets,
+             in the sense that the assets might absorb errors. For example, an electrical wire between pair of chip components.
+        </li>
+        <li> 
+            Code - the ABC language, which one might use to pass a message through the channel to overcome a noisy channel.
+             A good Code enables the recovery of messages that were damaged. Any string in the code is called a codeword.
+              For analysis, the length of the initial message is fixed, and we will denote it by \(k\) and call it the dimension of the code.
+               In addition, the length of the transmitted codeword is also fixed. Denote it by \(n\), and it is called the length of code. 
+        </li>
+        <li> 
+            Distance - the minimum number of charter swaps (bit flips) that one needs to do for transforming one codeword
+             to another. The distance also measures how hard mother nature should work to transform the original message into
+              another valid message. For example, consider the 4-repetition code, in which every charter is multiplied by 4.
+               That is, the word "hi" is mapped into "hhhhiiii". Therefore even if one of the "h"s will flip
+                into "a" ("hahhiiii"), one still has enough information to correct the error. Similarly, we could
+                 construct the 400-repetition code, which will allow us to deal with an even more significant amount of errors.
+                  But it is clear that multiplication requires pay in transmitting more bits, which gets us to define the 
+                  fourth parameter of the code. 
+        </li>
+        <li>
+            Rate - the ratio of bits in the original message to the number of bits transmitted through the channel ( \( \frac{k}{n}\) ). The goal is to construct an optimal code both in distance and rate. 
+        </li>
+    </ul>
+    <p>
+        It will make it convenient to think over the parameter above as the code's definition,
+         and we will denote a code with length \(n,\) dimension \(k,\) and distance \(d\) by \(C = [n,k,d]\).
+        <div style="position: relative; width: 100%;">
+            <div style="position: relative; width: 510px;" >
+            We say that the code is linear if the summation of the codewords pair is also a codeword.
+            In that case, the code is a linear space. The map from the original space into the code is called the generator, and by linearity, it is clear that the mapping is also linear. For example,
+            the 4-repetition code over the binary strings could be represented by its generator matrix \(G\). <br><br>              
+            And for the r-repetition code we denote by \( [n=kr,k,d=r] \) the paramters of the code. 
+            At first glance, it might seem that we could achieve tolerance against an arbitrary number of faults by
+             increasing the envelope size. But real-world models show that each bit we add into the transmission has
+              an equal chance to flip as the original bits. In other words, for a code to be applicable,
+             the number of faults it should tolerate should be linear in the number of bits it sends.
+             It is clear that for the repetition code to pass a message at an efficient rate, it must
+              pay by terrible tolerance (and opposite).
+              So the question arises: <br>
+              &nbsp; &nbsp; Are there codes in which their distance and dimension are linear at their length? 
+        </div>
+        
+        <div style="position: absolute; top: 0px; left:530px; width: 200px; left: right;">
+        \[
+         
+          G=\begin{bmatrix}     
+                                1 & 0 & 0 \\
+                                1 & 0 & 0 \\
+                                1 & 0 & 0 \\
+                                1 & 0 & 0 \\
+                                0 & 1 & 0 \\ 
+                                0 & 1 & 0 \\
+                                0 & 1 & 0 \\
+                                0 & 1 & 0 \\
+                                0 & 0 & 1 \\
+                                0 & 0 & 1 \\
+                                0 & 0 & 1 \\ 
+                                0 & 0 & 1
+            \end{bmatrix} \Rightarrow [ 12, 3, 4]
+
+         \]   
+        </div>
+        </div>
+    </p>
+        Linear rate.
+        Linear distance.
+    </div>
+</body>
